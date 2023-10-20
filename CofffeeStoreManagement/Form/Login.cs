@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CofffeeStoreManagement.Util;
 
 namespace CofffeeStoreManagement
 {
@@ -31,7 +32,7 @@ namespace CofffeeStoreManagement
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("終了します。よろしいですか？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageUtil.ShowMessage("QUES_1001", MessageBoxButtons.OKCancel, this.Text);
             if(result == DialogResult.Cancel)
             {
                 e.Cancel = true;
