@@ -1,7 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <message>
+	<!--question message-->
 	<contents id="QUES_1001">
 		<icon>Question</icon>
 		<text>終了します。よろしいですか？</text>
+	</contents>
+	<contents id="QUES_1002">
+		<icon>Question</icon>
+		<text>会計します。よろしいですか？</text>
+	</contents>
+	<contents id="QUES_1003">
+		<icon>Question</icon>
+		<text>割引を適用します。よろしいですか？</text>
+	</contents>
+	<contents id="QUES_1004">
+		<icon>Question</icon>
+		<text>テーブルをチェンジします。よろしいですか？</text>
+	</contents>
+	
+	<!--Error message-->
+	<contents id="ERR_2001">
+		<icon>Error</icon>
+		<text></text>
+	</contents>
+	<contents id="ERR_2002">
+		<icon>Error</icon>
+		<text>パスワードは入力されていません。</text>
+	</contents>
+	<contents id="ERR_2003">
+		<icon>Error</icon>
+		<text>ユーザー名またはパスワード一致しません。</text>
+	</contents>
+	<contents id="ERR_2004">
+		<icon>Error</icon>
+		<text>料理を追加する前に数を選択してください。。</text>
+	</contents>
+	<contents id="ERR_2005">
+		<icon>Error</icon>
+		<text>会計する伝票は存在しません。</text>
+	</contents>
+	<contents id="ERR_2006">
+		<icon>Error</icon>
+		<text>料理を追加する前にテーブルを選択してください。</text>
+	</contents>
+
+	<!--Info message-->
+	<contents id="INF_3001">
+		<icon>Info</icon>
+		<text>会計が完了しました。</text>
 	</contents>
 </message>

@@ -1,0 +1,68 @@
+
+
+-- tableSeat
+CREATE TABLE tableSeat
+(
+id INT IDENTITY PRIMARY KEY,
+table_name NVARCHAR(20) NOT NULL,
+table_status INT NOT NULL DEFAULT 0  -- 0 => Trống || 1 => Có người || 2 => da dc yoyaku
+)
+GO
+
+
+-- Account
+CREATE TABLE Account
+(
+user_name NVARCHAR(50) PRIMARY KEY,
+display_name NVARCHAR(50) NOT NULL,
+password NVARCHAR(20) NOT NULL,
+user_type INT NOT NULL  -- 0: staff || 1: admin
+)
+GO
+
+
+-- FoodCategory
+CREATE TABLE foodCategory
+(
+id INT IDENTITY PRIMARY KEY,
+category_name NVARCHAR(20) NOT NULL
+)
+GO
+
+
+-- Food
+CREATE TABLE food
+(
+id INT IDENTITY PRIMARY KEY,
+food_name NVARCHAR(20) NOT NULL,
+id_category INT NOT NULL,
+price FLOAT NOT NULL DEFAULT 0
+FOREIGN KEY (id_category) REFERENCES dbo.foodCategory(id)
+)
+GO
+
+
+-- Bill
+CREATE TABLE bill
+(
+id INT IDENTITY PRIMARY KEY,
+date_checkin DATE NOT NULL DEFAULT GETDATE(),
+date_checkOut DATE,
+id_tableSeat INT NOT NULL,
+status_paid INT NOT NULL DEFAULT 0 -- 0: chưa thanh toán || 1: đã thanh toán  
+FOREIGN KEY (id_tableSeat) REFERENCES dbo.tableSeat(id)
+)
+GO
+
+
+-- BillInfo
+CREATE TABLE billInfo
+(
+id INT IDENTITY PRIMARY KEY,
+id_bill INT NOT NULL,
+id_food INT NOT NULL,
+food_count INT NOT NULL DEFAULT 0
+FOREIGN KEY (id_bill) REFERENCES dbo.bill(id),
+FOREIGN KEY (id_food) REFERENCES dbo.food(id)
+)
+GO

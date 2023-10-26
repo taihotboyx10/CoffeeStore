@@ -19,7 +19,8 @@ namespace CofffeeStoreManagement.Util
 
             string msgText = msgId;
             string iconStr = "";
-            string path = System.IO.Path.Combine(@"C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\Message\Message.xml");
+            string path = System.IO.Path.Combine(@"C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\Message\Message.xml");
+            //string path = System.IO.Path.Combine(@"C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\Message\Message.xml");
 
             MessageBoxIcon msgIcon;
 
