@@ -1,0 +1,15 @@
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.exe.config
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.exe
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.pdb
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\bin\Debug\Guna.UI2.dll
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.AccountProfile.resources
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.AdminManagement.resources
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Login.resources
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Main.resources
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Properties.Resources.resources
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CopyComplete
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.exe
+C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.pdb

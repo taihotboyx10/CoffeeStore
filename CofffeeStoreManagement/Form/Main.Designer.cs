@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.管理者ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.アカウント情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,14 +71,15 @@
             this.アカウント情報ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1254, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(940, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 管理者ToolStripMenuItem
             // 
             this.管理者ToolStripMenuItem.Name = "管理者ToolStripMenuItem";
-            this.管理者ToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
+            this.管理者ToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.管理者ToolStripMenuItem.Text = "管理者";
             this.管理者ToolStripMenuItem.Click += new System.EventHandler(this.管理者ToolStripMenuItem_Click);
             // 
@@ -87,30 +89,29 @@
             this.個人情報ToolStripMenuItem,
             this.ログアウトToolStripMenuItem});
             this.アカウント情報ToolStripMenuItem.Name = "アカウント情報ToolStripMenuItem";
-            this.アカウント情報ToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.アカウント情報ToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.アカウント情報ToolStripMenuItem.Text = "アカウント情報";
             // 
             // 個人情報ToolStripMenuItem
             // 
             this.個人情報ToolStripMenuItem.Name = "個人情報ToolStripMenuItem";
-            this.個人情報ToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.個人情報ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.個人情報ToolStripMenuItem.Text = "アカウント情報";
             this.個人情報ToolStripMenuItem.Click += new System.EventHandler(this.アカウント情報ToolStripMenuItem_Click);
             // 
             // ログアウトToolStripMenuItem
             // 
             this.ログアウトToolStripMenuItem.Name = "ログアウトToolStripMenuItem";
-            this.ログアウトToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.ログアウトToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.ログアウトToolStripMenuItem.Text = "ログアウト";
             this.ログアウトToolStripMenuItem.Click += new System.EventHandler(this.ログアウトToolStripMenuItem_Click);
             // 
             // pnlTable
             // 
             this.pnlTable.AutoScroll = true;
-            this.pnlTable.Location = new System.Drawing.Point(16, 42);
-            this.pnlTable.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlTable.Location = new System.Drawing.Point(12, 36);
             this.pnlTable.Name = "pnlTable";
-            this.pnlTable.Size = new System.Drawing.Size(569, 549);
+            this.pnlTable.Size = new System.Drawing.Size(427, 476);
             this.pnlTable.TabIndex = 1;
             // 
             // cboCategory
@@ -118,10 +119,9 @@
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(1084, 69);
-            this.cboCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboCategory.Location = new System.Drawing.Point(813, 60);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(157, 28);
+            this.cboCategory.Size = new System.Drawing.Size(119, 25);
             this.cboCategory.TabIndex = 2;
             this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
@@ -136,10 +136,10 @@
             this.btnFoodAdd.FillColor = System.Drawing.Color.Orange;
             this.btnFoodAdd.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoodAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnFoodAdd.Location = new System.Drawing.Point(1083, 250);
-            this.btnFoodAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFoodAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnFoodAdd.Image")));
+            this.btnFoodAdd.Location = new System.Drawing.Point(812, 217);
             this.btnFoodAdd.Name = "btnFoodAdd";
-            this.btnFoodAdd.Size = new System.Drawing.Size(158, 43);
+            this.btnFoodAdd.Size = new System.Drawing.Size(118, 37);
             this.btnFoodAdd.TabIndex = 3;
             this.btnFoodAdd.Text = "料理追加";
             this.btnFoodAdd.Click += new System.EventHandler(this.btnFoodAdd_Click);
@@ -149,8 +149,8 @@
             this.nmrFoodNum.BackColor = System.Drawing.Color.Transparent;
             this.nmrFoodNum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.nmrFoodNum.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmrFoodNum.Location = new System.Drawing.Point(1084, 193);
-            this.nmrFoodNum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nmrFoodNum.Location = new System.Drawing.Point(813, 167);
+            this.nmrFoodNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nmrFoodNum.Maximum = new decimal(new int[] {
             10,
             0,
@@ -162,7 +162,7 @@
             0,
             -2147483648});
             this.nmrFoodNum.Name = "nmrFoodNum";
-            this.nmrFoodNum.Size = new System.Drawing.Size(157, 29);
+            this.nmrFoodNum.Size = new System.Drawing.Size(118, 25);
             this.nmrFoodNum.TabIndex = 4;
             this.nmrFoodNum.UpDownButtonFillColor = System.Drawing.Color.Gray;
             // 
@@ -175,11 +175,10 @@
             this.columnHeader4});
             this.lsvBill.GridLines = true;
             this.lsvBill.HideSelection = false;
-            this.lsvBill.Location = new System.Drawing.Point(615, 69);
-            this.lsvBill.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.lsvBill.Location = new System.Drawing.Point(461, 60);
             this.lsvBill.MultiSelect = false;
             this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(456, 405);
+            this.lsvBill.Size = new System.Drawing.Size(343, 352);
             this.lsvBill.TabIndex = 5;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
@@ -212,10 +211,9 @@
             this.cboTableBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTableBase.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTableBase.FormattingEnabled = true;
-            this.cboTableBase.Location = new System.Drawing.Point(615, 507);
-            this.cboTableBase.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboTableBase.Location = new System.Drawing.Point(461, 439);
             this.cboTableBase.Name = "cboTableBase";
-            this.cboTableBase.Size = new System.Drawing.Size(94, 28);
+            this.cboTableBase.Size = new System.Drawing.Size(72, 25);
             this.cboTableBase.TabIndex = 10;
             // 
             // cboFoodName
@@ -223,10 +221,9 @@
             this.cboFoodName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFoodName.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFoodName.FormattingEnabled = true;
-            this.cboFoodName.Location = new System.Drawing.Point(1084, 132);
-            this.cboFoodName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboFoodName.Location = new System.Drawing.Point(813, 114);
             this.cboFoodName.Name = "cboFoodName";
-            this.cboFoodName.Size = new System.Drawing.Size(157, 28);
+            this.cboFoodName.Size = new System.Drawing.Size(119, 25);
             this.cboFoodName.TabIndex = 12;
             // 
             // btnCashier
@@ -240,10 +237,11 @@
             this.btnCashier.FillColor = System.Drawing.Color.Orange;
             this.btnCashier.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCashier.ForeColor = System.Drawing.Color.Black;
-            this.btnCashier.Location = new System.Drawing.Point(1082, 509);
-            this.btnCashier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCashier.Image = ((System.Drawing.Image)(resources.GetObject("btnCashier.Image")));
+            this.btnCashier.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCashier.Location = new System.Drawing.Point(812, 441);
             this.btnCashier.Name = "btnCashier";
-            this.btnCashier.Size = new System.Drawing.Size(159, 43);
+            this.btnCashier.Size = new System.Drawing.Size(119, 37);
             this.btnCashier.TabIndex = 13;
             this.btnCashier.Text = "会計";
             this.btnCashier.Click += new System.EventHandler(this.btnCashier_Click);
@@ -259,10 +257,10 @@
             this.btnTableChange.FillColor = System.Drawing.Color.Orange;
             this.btnTableChange.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTableChange.ForeColor = System.Drawing.Color.Black;
-            this.btnTableChange.Location = new System.Drawing.Point(717, 509);
-            this.btnTableChange.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTableChange.Image = ((System.Drawing.Image)(resources.GetObject("btnTableChange.Image")));
+            this.btnTableChange.Location = new System.Drawing.Point(538, 441);
             this.btnTableChange.Name = "btnTableChange";
-            this.btnTableChange.Size = new System.Drawing.Size(152, 43);
+            this.btnTableChange.Size = new System.Drawing.Size(130, 37);
             this.btnTableChange.TabIndex = 14;
             this.btnTableChange.Text = "テーブル変更";
             this.btnTableChange.Click += new System.EventHandler(this.btnTableChange_Click);
@@ -278,10 +276,10 @@
             this.btnDiscount.FillColor = System.Drawing.Color.Orange;
             this.btnDiscount.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscount.ForeColor = System.Drawing.Color.Black;
-            this.btnDiscount.Location = new System.Drawing.Point(891, 509);
-            this.btnDiscount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDiscount.Image = ((System.Drawing.Image)(resources.GetObject("btnDiscount.Image")));
+            this.btnDiscount.Location = new System.Drawing.Point(674, 441);
             this.btnDiscount.Name = "btnDiscount";
-            this.btnDiscount.Size = new System.Drawing.Size(152, 43);
+            this.btnDiscount.Size = new System.Drawing.Size(114, 37);
             this.btnDiscount.TabIndex = 15;
             this.btnDiscount.Text = "割引適用";
             this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
@@ -298,41 +296,44 @@
             this.txtCashier.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCashier.ForeColor = System.Drawing.Color.Black;
             this.txtCashier.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCashier.Location = new System.Drawing.Point(1084, 562);
-            this.txtCashier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCashier.Location = new System.Drawing.Point(813, 487);
+            this.txtCashier.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtCashier.Name = "txtCashier";
             this.txtCashier.PasswordChar = '\0';
             this.txtCashier.PlaceholderText = "";
             this.txtCashier.ReadOnly = true;
             this.txtCashier.SelectedText = "";
-            this.txtCashier.Size = new System.Drawing.Size(157, 29);
+            this.txtCashier.Size = new System.Drawing.Size(118, 25);
             this.txtCashier.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(1080, 44);
+            this.label1.Location = new System.Drawing.Point(810, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 22);
+            this.label1.Size = new System.Drawing.Size(75, 18);
             this.label1.TabIndex = 17;
             this.label1.Text = "料理の種類";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1025, 187);
+            this.label2.Location = new System.Drawing.Point(769, 162);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 15);
+            this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 18;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(1078, 109);
+            this.label3.Location = new System.Drawing.Point(808, 94);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 22);
+            this.label3.Size = new System.Drawing.Size(50, 18);
             this.label3.TabIndex = 19;
             this.label3.Text = "料理名";
             // 
@@ -340,9 +341,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(1078, 169);
+            this.label4.Location = new System.Drawing.Point(808, 146);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 22);
+            this.label4.Size = new System.Drawing.Size(36, 18);
             this.label4.TabIndex = 20;
             this.label4.Text = "数量";
             // 
@@ -350,9 +352,10 @@
             // 
             this.lblTableName.AutoSize = true;
             this.lblTableName.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTableName.Location = new System.Drawing.Point(802, 42);
+            this.lblTableName.Location = new System.Drawing.Point(602, 36);
+            this.lblTableName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTableName.Name = "lblTableName";
-            this.lblTableName.Size = new System.Drawing.Size(103, 22);
+            this.lblTableName.Size = new System.Drawing.Size(85, 18);
             this.lblTableName.TabIndex = 21;
             this.lblTableName.Text = "table name";
             this.lblTableName.Visible = false;
@@ -369,13 +372,13 @@
             this.txtDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDiscount.ForeColor = System.Drawing.Color.Black;
             this.txtDiscount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiscount.Location = new System.Drawing.Point(891, 563);
-            this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDiscount.Location = new System.Drawing.Point(674, 488);
+            this.txtDiscount.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.PasswordChar = '\0';
             this.txtDiscount.PlaceholderText = "";
             this.txtDiscount.SelectedText = "";
-            this.txtDiscount.Size = new System.Drawing.Size(152, 29);
+            this.txtDiscount.Size = new System.Drawing.Size(114, 25);
             this.txtDiscount.TabIndex = 22;
             this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             // 
@@ -384,19 +387,19 @@
             this.cboTableDestination.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTableDestination.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTableDestination.FormattingEnabled = true;
-            this.cboTableDestination.Location = new System.Drawing.Point(615, 563);
-            this.cboTableDestination.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboTableDestination.Location = new System.Drawing.Point(461, 488);
             this.cboTableDestination.Name = "cboTableDestination";
-            this.cboTableDestination.Size = new System.Drawing.Size(94, 28);
+            this.cboTableDestination.Size = new System.Drawing.Size(72, 25);
             this.cboTableDestination.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(611, 482);
+            this.label5.Location = new System.Drawing.Point(458, 418);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 22);
+            this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 24;
             this.label5.Text = "テーブル元";
             // 
@@ -404,27 +407,29 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(611, 540);
+            this.label6.Location = new System.Drawing.Point(458, 468);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 22);
+            this.label6.Size = new System.Drawing.Size(0, 18);
             this.label6.TabIndex = 25;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Meiryo UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(611, 540);
+            this.label7.Location = new System.Drawing.Point(458, 468);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 22);
+            this.label7.Size = new System.Drawing.Size(66, 18);
             this.label7.TabIndex = 26;
             this.label7.Text = "テーブル先";
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(1254, 605);
+            this.ClientSize = new System.Drawing.Size(940, 524);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnTableChange);
             this.Controls.Add(this.label6);
@@ -447,8 +452,8 @@
             this.Controls.Add(this.lsvBill);
             this.Controls.Add(this.pnlTable);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "コーヒーストア管理";

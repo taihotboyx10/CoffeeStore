@@ -26,6 +26,7 @@ namespace CofffeeStoreManagement.DAO
         }
         private BillDAO() { }
 
+        // Select bill chua tinh tien theo table(status = 0)
         public int GetUnCheckedBillByTableId(int tableId)
         {
 
@@ -41,6 +42,35 @@ namespace CofffeeStoreManagement.DAO
             return -1;
         }
 
+        // Select cac bill da duoc tinh tien(status = 1)
+        public DataTable GetBillCashiered()
+        {
+            string query = "select id, id_table, date_checkin, discount, total_price from bill" +
+                           "where status_paid = 1";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt;
+        }
+
+        // Select cac bill da duoc tinh tien theo ngay(status = 1)
+        public DataTable GetBillCashieredByDate(DateTime dateTime)
+        {
+            string query = $"select id, id_table, date_checkin, discount, total_price from bill" +
+                           $"where status_paid = 1 and date_checkin = {dateTime}";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt;
+        }
+
+        // Select cac bill da duoc tinh tien theo ngay(status = 1)
+        public DataTable GetBillCashieredByDateToDate(DateTime dateTimeFrom, DateTime dateTimeTo)
+        {
+            string query = $"SELECT id, id_table, date_checkin, discount, total_price FROM bill " +
+               $"WHERE status_paid = 1 AND date_checkin BETWEEN '{dateTimeFrom}' AND '{dateTimeTo}'";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt;
+        }
         //Insert bill moi
         public void InsertBill(int tableId)
         {

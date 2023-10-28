@@ -43,10 +43,18 @@
 		<icon>Error</icon>
 		<text>料理を追加する前にテーブルを選択してください。</text>
 	</contents>
+	<contents id="ERR_2007">
+		<icon>Error</icon>
+		<text>必須項目が入力されていません。</text>
+	</contents>
 
 	<!--Info message-->
 	<contents id="INF_3001">
 		<icon>Info</icon>
 		<text>会計が完了しました。</text>
+	</contents>
+	<contents id="INF_3002">
+		<icon>Info</icon>
+		<text>料理が追加されました。</text>
 	</contents>
 </message>

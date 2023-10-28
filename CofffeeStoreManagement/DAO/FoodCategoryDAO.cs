@@ -41,5 +41,19 @@ namespace CofffeeStoreManagement.DAO
 
             return foodCategoryDTOs;
         }
+
+        // hien tai k dung den ham nay
+        public List<string> GetCategoryList()
+        {
+            List<string> categories = new List<string>();
+            string query = "select category_name from foodCategory";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in dt.Rows)
+            {
+                categories.Add(item[0].ToString());
+            }
+
+            return categories;
+        }
     }
 }

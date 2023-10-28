@@ -14,9 +14,13 @@ namespace CofffeeStoreManagement
 {
     public partial class Login : Form
     {
+        bool passwordShow;
+        Timer timer = new Timer();
         public Login()
         {
             InitializeComponent();
+            timer.Interval = 800;
+            timer.Tick += Timer_Tick;
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace CofffeeStoreManagement
 
         }
 
-        #region
+        #region Validate
         private bool CheckNull()
         {
             if (string.IsNullOrWhiteSpace(txtUserName.Text))
@@ -88,6 +92,18 @@ namespace CofffeeStoreManagement
                 this.Close();
             }
         }
-
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            passwordShow = false;
+            txtPassword.PasswordChar = '*'; // Ẩn mật khẩu
+            timer.Stop(); // Dừng Timer
+        }
+       
+        private void btnPasswordShow_Click(object sender, EventArgs e)
+        {
+            passwordShow = true;
+            txtPassword.PasswordChar = '\0'; // Hiển thị mật khẩu
+            timer.Start(); // Bắt đầu Timer
+        }
     }
 }

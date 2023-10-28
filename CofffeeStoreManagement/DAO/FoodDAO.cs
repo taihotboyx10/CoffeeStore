@@ -59,5 +59,45 @@ namespace CofffeeStoreManagement.DAO
 
             return foodLists;
         }
+
+        // Get all food
+        public DataTable GetAllFood()
+        {
+            string query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
+                           "from food, foodCategory";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt;
+        }
+
+        public DataTable GetFoodByFilter(object inputValue)
+        {
+            string query = "";
+            if(inputValue is int)
+            {
+                query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
+                           "from food, foodCategory" +
+                           $"where id = {inputValue}";
+            }
+            if (inputValue is string)
+            {
+                query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
+                           "from food, foodCategory" +
+                           $"where food_name LIKE '%{inputValue}%'";
+            }
+
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            return dt;
+        }
+
+        // Insert new food
+        public int InsertNewFood(int id, string foodName, int categoryId, double price)
+        {
+            string query = $"insert into food values({id}, '{foodName}', {categoryId}, {price})";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result;
+        }
     }
 }
