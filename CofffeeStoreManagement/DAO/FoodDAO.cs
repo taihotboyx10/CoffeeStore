@@ -63,8 +63,9 @@ namespace CofffeeStoreManagement.DAO
         // Get all food
         public DataTable GetAllFood()
         {
-            string query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
-                           "from food, foodCategory";
+            string query = "select food.id, food.food_name, foodCategory.category_name, food.price " +
+                           "from food " +
+                           "inner join foodCategory on food.id_category = foodCategory.id";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
 
             return dt;
@@ -75,14 +76,16 @@ namespace CofffeeStoreManagement.DAO
             string query = "";
             if(inputValue is int)
             {
-                query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
-                           "from food, foodCategory" +
-                           $"where id = {inputValue}";
+                query = "select food.id, food.food_name, foodCategory.category_name, food.price " +
+                           "from food " +
+                           "inner join foodCategory on food.id_category = foodCategory.id " +
+                           $"where food.id = {inputValue}";
             }
             if (inputValue is string)
             {
-                query = "select food.id, food.food_name, foodCategory.category_name, food.price" +
-                           "from food, foodCategory" +
+                query = "select food.id, food.food_name, foodCategory.category_name, food.price " +
+                           "from food " +
+                           "inner join foodCategory on food.id_category = foodCategory.id " +
                            $"where food_name LIKE '%{inputValue}%'";
             }
 
@@ -92,12 +95,29 @@ namespace CofffeeStoreManagement.DAO
         }
 
         // Insert new food
-        public int InsertNewFood(int id, string foodName, int categoryId, double price)
+        public int InsertNewFood(string foodName, int categoryId, double price)
         {
-            string query = $"insert into food values({id}, '{foodName}', {categoryId}, {price})";
+            string query = $"insert into food values('{foodName}', {categoryId}, {price})";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result;
+        }
+
+        // Delete food
+        public bool DeleteFoodByFoodId(int foodId)
+        {
+            string query = $"delete from food where id = {foodId}";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        // Update food
+
+        public bool UpdateFoodByFoodId(int foodId, string foodName, int categoryId, double price)
+        {
+            string query = $"update food set food_name = '{foodName}', id_category = {categoryId}, price = {price} where id = {foodId}";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
     }
 }

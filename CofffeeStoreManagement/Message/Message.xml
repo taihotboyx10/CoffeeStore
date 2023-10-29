@@ -17,6 +17,14 @@
 		<icon>Question</icon>
 		<text>テーブルをチェンジします。よろしいですか？</text>
 	</contents>
+	<contents id="QUES_1005">
+		<icon>Question</icon>
+		<text>更新します。よろしいですか？</text>
+	</contents>
+	<contents id="QUES_1006">
+		<icon>Question</icon>
+		<text>削除します。よろしいですか？</text>
+	</contents>
 	
 	<!--Error message-->
 	<contents id="ERR_2001">
@@ -47,6 +55,22 @@
 		<icon>Error</icon>
 		<text>必須項目が入力されていません。</text>
 	</contents>
+	<contents id="ERR_2008">
+		<icon>Error</icon>
+		<text>パスワードは６文字以上、少なくとも1つの大 文字、1つの数字を含める必要があります。</text>
+	</contents>
+	<contents id="ERR_2009">
+		<icon>Error</icon>
+		<text>新パスワードと再入力パスワードが一致しません。</text>
+	</contents>
+	<contents id="ERR_2010">
+		<icon>Error</icon>
+		<text>新パスワードと旧パスワードが同じになっています。</text>
+	</contents>
+	<contents id="ERR_2011">
+		<icon>Error</icon>
+		<text>パスワードは間違っています。</text>
+	</contents>
 
 	<!--Info message-->
 	<contents id="INF_3001">
@@ -55,6 +79,14 @@
 	</contents>
 	<contents id="INF_3002">
 		<icon>Info</icon>
-		<text>料理が追加されました。</text>
+		<text>追加されました。</text>
+	</contents>
+	<contents id="INF_3003">
+		<icon>Info</icon>
+		<text>更新が完了しました。</text>
+	</contents>
+	<contents id="INF_3004">
+		<icon>Info</icon>
+		<text>削除されました。</text>
 	</contents>
 </message>

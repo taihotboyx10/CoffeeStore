@@ -45,7 +45,7 @@ namespace CofffeeStoreManagement.DAO
         // Select cac bill da duoc tinh tien(status = 1)
         public DataTable GetBillCashiered()
         {
-            string query = "select id, id_table, date_checkin, discount, total_price from bill" +
+            string query = "select id, id_tableSeat, date_checkin, discount, total_price from bill " +
                            "where status_paid = 1";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
 
@@ -55,17 +55,17 @@ namespace CofffeeStoreManagement.DAO
         // Select cac bill da duoc tinh tien theo ngay(status = 1)
         public DataTable GetBillCashieredByDate(DateTime dateTime)
         {
-            string query = $"select id, id_table, date_checkin, discount, total_price from bill" +
-                           $"where status_paid = 1 and date_checkin = {dateTime}";
+            string query = $"select id, id_tableSeat, date_checkin, discount, total_price from bill " +
+                           $"where status_paid = 1 and date_checkin = '{dateTime}'";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
 
             return dt;
         }
 
-        // Select cac bill da duoc tinh tien theo ngay(status = 1)
+        // Select cac bill da duoc tinh tien theo thang(status = 1)
         public DataTable GetBillCashieredByDateToDate(DateTime dateTimeFrom, DateTime dateTimeTo)
         {
-            string query = $"SELECT id, id_table, date_checkin, discount, total_price FROM bill " +
+            string query = $"SELECT id, id_tableSeat, date_checkin, discount, total_price FROM bill " +
                $"WHERE status_paid = 1 AND date_checkin BETWEEN '{dateTimeFrom}' AND '{dateTimeTo}'";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
 

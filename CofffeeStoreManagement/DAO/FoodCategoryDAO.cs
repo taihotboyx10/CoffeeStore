@@ -42,18 +42,40 @@ namespace CofffeeStoreManagement.DAO
             return foodCategoryDTOs;
         }
 
-        // hien tai k dung den ham nay
-        public List<string> GetCategoryList()
+        // Get all category
+        public DataTable GetAllCategory()
         {
-            List<string> categories = new List<string>();
-            string query = "select category_name from foodCategory";
+            string query = "select * from foodCategory";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
-            foreach (DataRow item in dt.Rows)
-            {
-                categories.Add(item[0].ToString());
-            }
 
-            return categories;
+            return dt;
+        }
+
+        // Insert new category
+        public bool InsertCategory(string categoryName)
+        {
+            string query = $"insert into foodCategory values('{categoryName}')";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        // Delete category
+        public bool DeleteCategoryById(int categoryId)
+        {
+            string query = $"delete from foodCategory where id = {categoryId}";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        // Update category
+        public bool UpdateCategoryById(int categoryId, string categoryName)
+        {
+            string query = $"update foodCategory set category_name = '{categoryName}' where id = {categoryId}";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
     }
 }

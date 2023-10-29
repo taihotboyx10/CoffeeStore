@@ -17,6 +17,8 @@ namespace CofffeeStoreManagement
 {
     public partial class AdminManagement : Form
     {
+        BindingSource foodList = new BindingSource();
+        BindingSource categoryList = new BindingSource();
         int categoryIdWG;
         public AdminManagement()
         {
@@ -42,12 +44,46 @@ namespace CofffeeStoreManagement
             dgvEarning.DataSource = dtBill;
 
             // dgv food
-            DataTable dtFood = FoodDAO.Instance.GetAllFood();
-            dgvFood.DataSource = dtFood;
+            dgvFood.DataSource = foodList;
+            LoadFood();
+            FoodBinding();
 
-
+            // dgv category
+            dgvCategory.DataSource = categoryList;
+            LoadCategory();
+            CategoryBinding();
         }
 
+        private void LoadFood()
+        {
+            // dgv food
+            foodList.DataSource = FoodDAO.Instance.GetAllFood();
+        }
+
+        /// <summary>
+        /// dgvFood binding
+        /// </summary>
+        private void FoodBinding()
+        {
+            txtFoodId.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txtFoodName.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "food_name", true, DataSourceUpdateMode.Never));
+            cboCategoryFood.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "category_name", true, DataSourceUpdateMode.Never));
+            txtFoodPrice.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "price", true, DataSourceUpdateMode.Never));
+        }
+        private void LoadCategory()
+        {
+            // dgv category
+            categoryList.DataSource = FoodCategoryDAO.Instance.GetAllCategory();
+        }
+
+        /// <summary>
+        /// dgvFood binding
+        /// </summary>
+        private void CategoryBinding()
+        {
+            txtCategoryId.DataBindings.Add(new Binding("Text", dgvCategory.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txtCategoryName.DataBindings.Add(new Binding("Text", dgvCategory.DataSource, "category_name", true, DataSourceUpdateMode.Never));
+        }
         #region Uriage
         private void btnFilterByDate_Click(object sender, EventArgs e)
         {
@@ -63,15 +99,8 @@ namespace CofffeeStoreManagement
         #endregion
 
         #region Food
-        private bool IsCheckNull()
+        private bool IsCheckNullInTabFood()
         {
-            if (string.IsNullOrEmpty(txtFoodId.Text))
-            {
-                MessageUtil.ShowMessage("ERR_2007", MessageBoxButtons.OK, this.Text, "料理番号");
-                txtFoodId.Focus();
-                return false;
-            }
-
             if (string.IsNullOrEmpty(txtFoodName.Text))
             {
                 MessageUtil.ShowMessage("ERR_2007", MessageBoxButtons.OK, this.Text, "料理名");
@@ -98,7 +127,7 @@ namespace CofffeeStoreManagement
 
         private void txtFoodId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(char.IsLetter(e.KeyChar) || (e.KeyChar != '\b'))
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '\b'))
             {
                 e.Handled = true;
             }
@@ -106,7 +135,7 @@ namespace CofffeeStoreManagement
 
         private void txtFoodPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || (e.KeyChar != '\b'))
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '\b'))
             {
                 e.Handled = true;
             }
@@ -115,60 +144,151 @@ namespace CofffeeStoreManagement
         {
             int number;
             DataTable dt = new DataTable();
-            if (string.IsNullOrEmpty(txtFoodSearch.Text))
+            if (string.IsNullOrEmpty(txtFoodSearch.Text.Trim()))
             {
                 return;
             }
 
             if (int.TryParse(txtFoodSearch.Text, out number))
             {
+
                 // Đây là kiểu int
-                dt = FoodDAO.Instance.GetFoodByFilter(number);
+                foodList.DataSource = FoodDAO.Instance.GetFoodByFilter(number);
             }
             else
             {
-                dt = FoodDAO.Instance.GetFoodByFilter(txtFoodSearch.Text);
+                foodList.DataSource = FoodDAO.Instance.GetFoodByFilter(txtFoodSearch.Text);
             }
 
-            dgvFood.DataSource = dt;
+            dgvFood.DataSource = foodList;
+
         }
 
         private void cboCategoryFood_SelectedIndexChanged(object sender, EventArgs e)
         {
-            categoryIdWG = (int)cboCategoryFood.SelectedValue;
+            categoryIdWG = Convert.ToInt16(cboCategoryFood.SelectedValue);
         }
 
         private void btnFoodAdd_Click(object sender, EventArgs e)
         {
-            if (!IsCheckNull())
+            if (!IsCheckNullInTabFood())
             {
                 return;
             }
-            int foodId = Convert.ToInt16(txtFoodId.Text);
             string foodName = txtFoodName.Text;
             double price = Convert.ToDouble(txtFoodPrice.Text);
-            int result = FoodDAO.Instance.InsertNewFood(foodId, foodName, categoryIdWG, price);
+            int result = FoodDAO.Instance.InsertNewFood(foodName, categoryIdWG, price);
             if(result > 0)
             {
                 MessageUtil.ShowMessage("INF_3002", MessageBoxButtons.OK, this.Text);
+                LoadFood();
             }
         }
 
 
-        private void dgvFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnFoodDelete_Click(object sender, EventArgs e)
         {
-            if (dgvFood.SelectedRows.Count > 0)
+            if(MessageUtil.ShowMessage("QUES_1006", MessageBoxButtons.OKCancel, this.Text) == DialogResult.OK)
             {
-                int cln = dgvFood.ColumnCount;
-                DataGridViewRow selectedRow = dgvFood.SelectedRows[0];
-                // Lấy giá trị của cột đầu tiên (có chỉ số là 0)
-                for (int i = 0; i < cln; i++)
+                if(FoodDAO.Instance.DeleteFoodByFoodId(Convert.ToInt16(txtFoodId.Text)))
                 {
-                    txtFoodId = selectedRow.Cells[0].Value
+                    MessageUtil.ShowMessage("INF_3004", MessageBoxButtons.OK, this.Text);
+                    LoadFood();
                 }
-                object cellValue = selectedRow.Cells[0].Value;
             }
-                
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtFoodId.Text = string.Empty;
+            txtFoodName.Text = string.Empty;
+            txtFoodPrice.Text = string.Empty;
+        }
+        
+
+        private void btnFoodUpdate_Click(object sender, EventArgs e)
+        {
+            if (!IsCheckNullInTabFood())
+            {
+                return;
+            }
+
+            if (MessageUtil.ShowMessage("QUES_1005", MessageBoxButtons.OKCancel, this.Text) == DialogResult.OK)
+            {
+                int foodId = Convert.ToInt16(txtFoodId.Text);
+                string foodName = txtFoodName.Text;
+                int categoryId = categoryIdWG;
+                double price = Convert.ToDouble(txtFoodPrice.Text);
+                if (FoodDAO.Instance.UpdateFoodByFoodId(foodId, foodName, categoryId, price))
+                {
+                    MessageUtil.ShowMessage("INF_3003", MessageBoxButtons.OK, this.Text);
+                    LoadFood();
+                }
+            }
+        }
+
+        private void btnFoodView_Click(object sender, EventArgs e)
+        {
+            LoadFood();
+            dgvFood.DataSource = foodList;
+        }
+        #endregion
+
+        #region Category
+        private bool IsCheckNullInTabCategory()
+        {
+            if (string.IsNullOrEmpty(txtCategoryName.Text))
+            {
+                MessageUtil.ShowMessage("ERR_2007", MessageBoxButtons.OK, this.Text, "カテゴリ名");
+                txtCategoryName.Focus();
+                return false;
+            }
+            return true;
+        }
+        private void btnCategoryAdd_Click(object sender, EventArgs e)
+        {
+            if (!IsCheckNullInTabCategory())
+            {
+                return;
+            }
+            if (FoodCategoryDAO.Instance.InsertCategory(txtCategoryName.Text))
+            {
+                MessageUtil.ShowMessage("INF_3002", MessageBoxButtons.OK, this.Text);
+                LoadCategory();
+            }
+        }
+
+        private void btnCategoryDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageUtil.ShowMessage("QUES_1006", MessageBoxButtons.OKCancel, this.Text) == DialogResult.OK)
+            {
+                if (FoodCategoryDAO.Instance.DeleteCategoryById(Convert.ToInt16(txtCategoryId.Text)))
+                {
+                    MessageUtil.ShowMessage("INF_3004", MessageBoxButtons.OK, this.Text);
+                    LoadCategory();
+                }
+            }
+        }
+        private void btnCategoryUpdate_Click(object sender, EventArgs e)
+        {
+            if (!IsCheckNullInTabCategory())
+            {
+                return;
+            }
+            if (MessageUtil.ShowMessage("QUES_1005", MessageBoxButtons.OKCancel, this.Text) == DialogResult.OK)
+            {
+                int categoryId = Convert.ToInt16(txtCategoryId.Text);
+                string categoryName = txtCategoryName.Text;
+                if (FoodCategoryDAO.Instance.UpdateCategoryById(categoryId, categoryName))
+                {
+                    MessageUtil.ShowMessage("INF_3003", MessageBoxButtons.OK, this.Text);
+                    LoadCategory();
+                }
+            }
+        }
+        private void btnCategoryView_Click(object sender, EventArgs e)
+        {
+            LoadCategory();
         }
         #endregion
 

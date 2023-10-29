@@ -13,3 +13,19 @@ C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug
 C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CopyComplete
 C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.exe
 C:\Users\HP\source\repos\CofffeeStoreManagement\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.pdb
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.exe.config
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.exe
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\bin\Debug\CofffeeStoreManagement.pdb
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\bin\Debug\Guna.UI2.dll
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.AssemblyReference.cache
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.SuggestedBindingRedirects.cache
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.AccountProfile.resources
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.AdminManagement.resources
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Login.resources
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Main.resources
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.Properties.Resources.resources
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.GenerateResource.cache
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CoreCompileInputs.cache
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CopyComplete
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.exe
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.pdb

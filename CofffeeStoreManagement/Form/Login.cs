@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CofffeeStoreManagement.DAO;
+using CofffeeStoreManagement.DTO;
 using CofffeeStoreManagement.Util;
 
 namespace CofffeeStoreManagement
@@ -73,7 +74,8 @@ namespace CofffeeStoreManagement
             bool result = AccountDAO.Instance.CheckAccount(txtUserName.Text, txtPassword.Text);
             if (result)
             {
-                Main main = new Main();
+                AccountDTO accountDTO = AccountDAO.Instance.GetAccountByUserName(txtUserName.Text);
+                Main main = new Main(accountDTO);
                 main.ShowDialog();//show top most form main 
                 this.Close();
             }

@@ -18,14 +18,21 @@ namespace CofffeeStoreManagement
 {
     public partial class Main : Form
     {
+
         double cashierWG;
-        public Main()
+
+        private AccountDTO accountDTO;
+        //public AccountDTO AccountDTO { get => accountDTO; set => accountDTO = value; }
+
+        public Main(AccountDTO account)
         {
+            this.accountDTO = account;
             InitializeComponent();
         }       
 
         private void Main_Load(object sender, EventArgs e)
         {
+            ChangeAccount(this.accountDTO.accountType);
             pnlTable.Controls.Clear();
             //Table load
             List<TableDTO> tableDTOs = TableDAO.Instance.GetTableList();
@@ -79,6 +86,12 @@ namespace CofffeeStoreManagement
                 }
             }
         }
+
+        private void ChangeAccount(int type)
+        {
+            管理者ToolStripMenuItem.Enabled = (type == 1);
+        }
+
         /// <summary>
         /// Thay doi category => thay doi ten mon
         /// </summary>
@@ -357,7 +370,7 @@ namespace CofffeeStoreManagement
         #region ToolStrip
         private void アカウント情報ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountProfile accountProfile = new AccountProfile();
+            AccountProfile accountProfile = new AccountProfile(accountDTO);
             accountProfile.ShowDialog();
         }
 
