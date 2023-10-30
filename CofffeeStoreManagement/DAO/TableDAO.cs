@@ -97,7 +97,7 @@ namespace CofffeeStoreManagement.DAO
         // Insert new table
         public bool InsertNewTable(string tableNum)
         {
-            string query = $"insert into tableSeat values('{tableNum}')";
+            string query = $"insert into tableSeat (table_name, table_status) values('{tableNum}', 0)";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

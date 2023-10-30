@@ -26,6 +26,9 @@ namespace CofffeeStoreManagement
         public AccountDTO loginAccount;
 
         int categoryIdWG;
+
+        // Bien flag danh dau txtUserName
+        bool IsTxtUserNameChangeWG = false;
         public AdminManagement()
         {
             InitializeComponent();
@@ -127,9 +130,9 @@ namespace CofffeeStoreManagement
 
         private void AccountBinding()
         {
-            txtUserName.DataBindings.Add(new Binding("Text", dgvTable.DataSource, "user_name", true, DataSourceUpdateMode.Never));
-            txtDisplayUserName.DataBindings.Add(new Binding("Text", dgvTable.DataSource, "display_name", true, DataSourceUpdateMode.Never));
-            cboAccountType.DataBindings.Add(new Binding("Text", dgvTable.DataSource, "account_type", true, DataSourceUpdateMode.Never));
+            txtUserName.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "user_name", true, DataSourceUpdateMode.Never));
+            txtDisplayUserName.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "display_name", true, DataSourceUpdateMode.Never));
+            cboAccountType.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "user_type", true, DataSourceUpdateMode.Never));
         }
         #endregion
 
@@ -239,10 +242,13 @@ namespace CofffeeStoreManagement
         {
             if(MessageUtil.ShowMessage("QUES_1006", MessageBoxButtons.OKCancel, this.Text) == DialogResult.OK)
             {
-                if(FoodDAO.Instance.DeleteFoodByFoodId(Convert.ToInt16(txtFoodId.Text)))
+                if (BillInfoDAO.Instance.DeleteBillInfoWhenDeleteFood(Convert.ToInt16(txtFoodId.Text)))
                 {
-                    MessageUtil.ShowMessage("INF_3004", MessageBoxButtons.OK, this.Text);
-                    LoadFood();
+                    if(FoodDAO.Instance.DeleteFoodByFoodId(Convert.ToInt16(txtFoodId.Text)))
+                    {
+                        MessageUtil.ShowMessage("INF_3004", MessageBoxButtons.OK, this.Text);
+                        LoadFood();
+                    }
                 }
             }
         }
@@ -344,7 +350,7 @@ namespace CofffeeStoreManagement
         #region Table
         private bool IsCheckNullInTabTable()
         {
-            if (string.IsNullOrEmpty(txtCategoryName.Text))
+            if (string.IsNullOrEmpty(txtTableNum.Text))
             {
                 MessageUtil.ShowMessage("ERR_2007", MessageBoxButtons.OK, this.Text, "テーブル番号");
                 txtTableNum.Focus();
@@ -439,7 +445,13 @@ namespace CofffeeStoreManagement
         }
         private void btnAccountAdd_Click(object sender, EventArgs e)
         {
-            txtUserName.Text = string.Empty;
+            if(IsTxtUserNameChangeWG == false)
+            {
+                txtUserName.Text = string.Empty;
+                IsTxtUserNameChangeWG = true;
+
+            }
+
             txtUserName.ReadOnly = false;
             if (!IsCheckNullInTabAccount())
             {
@@ -453,12 +465,13 @@ namespace CofffeeStoreManagement
             {
                 string username = txtUserName.Text;
                 string displayName = txtDisplayUserName.Text;
-                int accounType = (cboAccountType.Text == "マネージャー") ? 1:0 ;
+                string accounType = (cboAccountType.Text == "マネージャー") ? "1":"0" ;
                 
                 if (AccountDAO.Instance.InsertNewAccount(username, displayName, accounType))
                 {
                     MessageUtil.ShowMessage("INF_3002", MessageBoxButtons.OK, this.Text);
                     txtUserName.ReadOnly = true;
+                    IsTxtUserNameChangeWG = false;
                     LoadAccount();
                 }
             }

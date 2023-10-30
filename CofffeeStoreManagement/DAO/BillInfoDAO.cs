@@ -77,5 +77,12 @@ namespace CofffeeStoreManagement.DAO
             string query = $"delete from billInfo where id_food = {foodId}";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
         }
+
+        public bool DeleteBillInfoWhenDeleteFood(int foodId)
+        {
+            string query = $"delete from billInfo where id_food = {foodId}";
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

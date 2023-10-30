@@ -90,27 +90,27 @@ namespace CofffeeStoreManagement.DAO
 
         public DataTable GetAllAccount()
         {
-            string query = $"select user_name, display_name, account_type from account";
+            string query = $"select user_name, display_name, user_type from account";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in dt.Rows)
             {
-                if (item["account_type"].ToString() == "0")
+                if (item["user_type"].ToString() == "0")
                 {
-                    item["account_type"] = "一般ユーザー"; // Gán giá trị mới
+                    item["user_type"] = "一般ユーザー"; // Gán giá trị mới
                 }
                 else
                 {
-                    item["account_type"] = "マネージャー";
+                    item["user_type"] = "マネージャー";
                 }
             }
             return dt;
         }
 
         // Insert new account
-        public bool InsertNewAccount(string userName, string displayName, int accountType)
+        public bool InsertNewAccount(string userName, string displayName, string accountType)
         {
-            string query = $"insert into tableSeat values('{userName}', '{displayName}', {accountType})";
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            string query = $"insert into account values('{userName}', '{displayName}', '0', '{accountType}')";
+            int result = DataProvider.Instance.ExecuteNonQuery(query); 
 
             return result > 0;
         }
@@ -118,7 +118,7 @@ namespace CofffeeStoreManagement.DAO
         // Delete account
         public bool DeleteAccountByUserName(string userName)
         {
-            string query = $"delete from tableSeat where user_name = {userName}";
+            string query = $"delete from account where user_name = '{userName}'";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -127,7 +127,7 @@ namespace CofffeeStoreManagement.DAO
         // Update table
         public bool UpdateAccountByUserName(string userName, string displayName, int accountType)
         {
-            string query = $"update account set display_name = '{displayName}', account_type = {accountType} where user_name = '{userName}'";
+            string query = $"update account set display_name = '{displayName}', user_type = {accountType} where user_name = '{userName}'";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
