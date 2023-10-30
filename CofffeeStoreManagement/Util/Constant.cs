@@ -18,5 +18,10 @@ namespace CofffeeStoreManagement.Util
             { 2, "予約済み"},
         };
 
+        public static readonly Dictionary<int, string> ACCOUNT_TYPE = new Dictionary<int, string>
+        {
+            { 0, "一般ユーザー"},
+            { 1, "マネージャー"},
+        };
     }
 }

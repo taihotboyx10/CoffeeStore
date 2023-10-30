@@ -25,6 +25,14 @@
 		<icon>Question</icon>
 		<text>削除します。よろしいですか？</text>
 	</contents>
+	<contents id="QUES_1007">
+		<icon>Question</icon>
+		<text>ユーザーを追加します。よろしいですか？</text>
+	</contents>
+	<contents id="QUES_1008">
+		<icon>Question</icon>
+		<text>パスワードをリセットします。よろしいですか？</text>
+	</contents>
 	
 	<!--Error message-->
 	<contents id="ERR_2001">
@@ -71,7 +79,14 @@
 		<icon>Error</icon>
 		<text>パスワードは間違っています。</text>
 	</contents>
-
+	<contents id="ERR_2012">
+		<icon>Error</icon>
+		<text>このユーザー名が重複されています。他のユーザー名にしてください</text>
+	</contents>
+	<contents id="ERR_2013">
+		<icon>Error</icon>
+		<text>ログインされているアカウントを削除できません。</text>
+	</contents>
 	<!--Info message-->
 	<contents id="INF_3001">
 		<icon>Info</icon>
@@ -88,5 +103,13 @@
 	<contents id="INF_3004">
 		<icon>Info</icon>
 		<text>削除されました。</text>
+	</contents>
+	<contents id="INF_3005">
+		<icon>Info</icon>
+		<text>パスワードがリセットされました。</text>
+	</contents>
+	<contents id="INF_3006">
+		<icon>Info</icon>
+		<text>アカウント情報でパスワード再設定を行ってください。</text>
 	</contents>
 </message>

@@ -32,6 +32,12 @@ namespace CofffeeStoreManagement
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // Message check change password
+            if(this.accountDTO.password == "0")
+            {
+                MessageUtil.ShowMessage("INF_3006", MessageBoxButtons.OK, this.Text);
+            }
+
             ChangeAccount(this.accountDTO.accountType);
             pnlTable.Controls.Clear();
             //Table load
@@ -377,6 +383,7 @@ namespace CofffeeStoreManagement
         private void 管理者ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminManagement adminManagement = new AdminManagement();
+            adminManagement.loginAccount = this.accountDTO; 
             adminManagement.ShowDialog();
         }
         #endregion
