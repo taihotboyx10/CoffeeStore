@@ -87,6 +87,10 @@
 		<icon>Error</icon>
 		<text>ログインされているアカウントを削除できません。</text>
 	</contents>
+	<contents id="ERR_2014">
+		<icon>Error</icon>
+		<text>５回以上間違っています。管理者に連絡してパスワードのリセットを行っていただいてください。</text>
+	</contents>
 	<!--Info message-->
 	<contents id="INF_3001">
 		<icon>Info</icon>

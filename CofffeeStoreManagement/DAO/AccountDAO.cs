@@ -35,6 +35,19 @@ namespace CofffeeStoreManagement.DAO
             return dt.Rows.Count > 0;
         }
 
+        public List<string> GetUserNameList()
+        {
+            List<string> userNameLists = new List<string>();
+            string query = $"select user_name from account where user_type = 0";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                userNameLists.Add(item[0].ToString());
+            }
+            return userNameLists;
+        }
+
         public AccountDTO GetAccountByUserName(string userName)
         {
             AccountDTO accountDTO = new AccountDTO();
@@ -138,6 +151,21 @@ namespace CofffeeStoreManagement.DAO
             string query = $"update account set password = 0 where user_name = '{userName}'";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
+        }
+
+        // Update loginError
+        public void UpdateLogginError(string userName)
+        {
+            string query = $"update account set login_error = 5 where user_name = {userName}";
+            DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        // Check loginerror >= 5
+        public bool CheckLoginError(string userName)
+        {
+            string query = $"select login_error from account where user_name = {userName}";
+            int result = Convert.ToInt16(DataProvider.Instance.ExecuteScalar(query));
+            return result >= 5;
         }
     }
 }

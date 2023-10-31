@@ -17,6 +17,7 @@ namespace CofffeeStoreManagement
     {
         bool passwordShow;
         Timer timer = new Timer();
+        int loginError;
         public Login()
         {
             InitializeComponent();
@@ -64,6 +65,14 @@ namespace CofffeeStoreManagement
         }
         #endregion
 
+        //Check username hop le
+        private bool CheckUserName()
+        {
+            List<string> userNameLists = AccountDAO.Instance.GetUserNameList();
+            
+            return (userNameLists.Contains(txtUserName.Text));
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //Validate
@@ -71,19 +80,36 @@ namespace CofffeeStoreManagement
             {
                 return;
             }
-            bool result = AccountDAO.Instance.CheckAccount(txtUserName.Text, txtPassword.Text);
-            if (result)
+
+            // Check 5 lan tro len hay khong
+            if (CheckUserName() && AccountDAO.Instance.CheckLoginError(txtUserName.Text))
             {
+                MessageUtil.ShowMessage("ERR_2014", MessageBoxButtons.OK, this.Text);
+            }
+
+            bool result = AccountDAO.Instance.CheckAccount(txtUserName.Text, txtPassword.Text);
+            if (result) // login thanhcong
+            {
+                loginError = 0;
                 AccountDTO accountDTO = AccountDAO.Instance.GetAccountByUserName(txtUserName.Text);
                 Main main = new Main(accountDTO);
                 main.ShowDialog();//show top most form main 
                 this.Close();
             }
-            else
+            else // login that bai
             {
+                if (CheckUserName())
+                {
+                    loginError++;
+                }
                 MessageUtil.ShowMessage("ERR_2003", MessageBoxButtons.OK, this.Text);
             }
 
+            // Neu that bai qua 5 lan thi luu vao db
+            if (CheckUserName() && loginError >= 5)
+            {
+                AccountDAO.Instance.UpdateLogginError(txtUserName.Text);
+            }
         }
 
         private void btnOut_Click(object sender, EventArgs e)

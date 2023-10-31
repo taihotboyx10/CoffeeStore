@@ -59,6 +59,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.aaaaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrFoodNum)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +69,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.管理者ToolStripMenuItem,
+            this.aaaaaToolStripMenuItem,
             this.アカウント情報ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -95,14 +97,14 @@
             // 個人情報ToolStripMenuItem
             // 
             this.個人情報ToolStripMenuItem.Name = "個人情報ToolStripMenuItem";
-            this.個人情報ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.個人情報ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.個人情報ToolStripMenuItem.Text = "アカウント情報";
             this.個人情報ToolStripMenuItem.Click += new System.EventHandler(this.アカウント情報ToolStripMenuItem_Click);
             // 
             // ログアウトToolStripMenuItem
             // 
             this.ログアウトToolStripMenuItem.Name = "ログアウトToolStripMenuItem";
-            this.ログアウトToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.ログアウトToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ログアウトToolStripMenuItem.Text = "ログアウト";
             this.ログアウトToolStripMenuItem.Click += new System.EventHandler(this.ログアウトToolStripMenuItem_Click);
             // 
@@ -424,6 +426,12 @@
             this.label7.TabIndex = 26;
             this.label7.Text = "テーブル先";
             // 
+            // aaaaaToolStripMenuItem
+            // 
+            this.aaaaaToolStripMenuItem.Name = "aaaaaToolStripMenuItem";
+            this.aaaaaToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.aaaaaToolStripMenuItem.Text = "予約リスト";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,5 +507,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripMenuItem aaaaaToolStripMenuItem;
     }
 }
