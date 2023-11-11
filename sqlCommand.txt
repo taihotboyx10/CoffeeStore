@@ -66,3 +66,5 @@ FOREIGN KEY (id_bill) REFERENCES dbo.bill(id),
 FOREIGN KEY (id_food) REFERENCES dbo.food(id)
 )
 GO
+
+

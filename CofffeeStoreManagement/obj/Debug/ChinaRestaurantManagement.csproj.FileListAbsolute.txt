@@ -29,3 +29,4 @@ C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug
 C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\ChinaRestaurantManagement.csproj.CopyComplete
 C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.exe
 C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.pdb
+C:\Users\Nguyen Du Tai\source\repos\CoffeeStore\CofffeeStoreManagement\obj\Debug\CofffeeStoreManagement.予約リスト.resources

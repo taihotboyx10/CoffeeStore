@@ -91,6 +91,18 @@
 		<icon>Error</icon>
 		<text>５回以上間違っています。管理者に連絡してパスワードのリセットを行っていただいてください。</text>
 	</contents>
+	<contents id="ERR_2015">
+		<icon>Error</icon>
+		<text>フォーマットが間違っています。</text>
+	</contents>
+	<contents id="ERR_2016">
+		<icon>Error</icon>
+		<text>今日からの時間を選ばなければなりません。</text>
+	</contents>
+	<contents id="ERR_2017">
+		<icon>Error</icon>
+		<text>2ヶ月以内のご予約のみ受付可能です。</text>
+	</contents>
 	<!--Info message-->
 	<contents id="INF_3001">
 		<icon>Info</icon>

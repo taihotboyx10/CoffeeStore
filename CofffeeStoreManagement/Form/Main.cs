@@ -304,6 +304,8 @@ namespace CofffeeStoreManagement
                     //Thread.CurrentThread.CurrentCulture = culture;
                     txtCashier.Text = priceAfterDiscount.ToString("c", culture);
 
+                    txtDiscount.Text = string.Empty;
+
                 }
             }
         }
@@ -386,20 +388,34 @@ namespace CofffeeStoreManagement
             adminManagement.loginAccount = this.accountDTO; 
             adminManagement.ShowDialog();
         }
+
+        private void 予約リストToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            予約リスト reservation = new 予約リスト();
+            reservation.ShowDialog();
+        }
         #endregion
 
         #region Close
         private void ログアウトToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageUtil.ShowMessage("QUES_1001", MessageBoxButtons.OKCancel, this.Text);
-            if (result == DialogResult.Cancel)
+            if (result == DialogResult.OK)
             {
-                e.Cancel = true;
+                e.Cancel = false; // Cho phép đóng form
+
+                // Tạo thể hiện mới của form Login và hiển thị nó
+                Login login = new Login();
+                login.Show();
+            }
+            else
+            {
+                e.Cancel = true; // Ngăn chặn việc đóng form
             }
         }
         #endregion

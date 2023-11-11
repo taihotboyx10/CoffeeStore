@@ -18,6 +18,10 @@ namespace CofffeeStoreManagement
 {
     public partial class AdminManagement : Form
     {
+        private DataTable dtBill; // Danh sách tất cả hoá đơn
+        private int currentPage = 1; // Trang hiện tại
+        private int recordsPerPage = 10; // Số bản ghi trên mỗi trang
+
         BindingSource foodList = new BindingSource();
         BindingSource categoryList = new BindingSource();
         BindingSource tableList = new BindingSource();
@@ -37,6 +41,9 @@ namespace CofffeeStoreManagement
 
         private void AdminManagement_Load(object sender, EventArgs e)
         {
+            LoadInvoicesFromDatabase();
+            DisplayInvoicesOnCurrentPage();
+
             // Set data for cboCategory
             List<KeyValuePair<int, string>> categories = FoodCategoryDAO.Instance.GetListFoodCategory();
             cboCategoryFood.DisplayMember = "value";
@@ -47,10 +54,6 @@ namespace CofffeeStoreManagement
             dtpDate.Value = DateTime.Now;
             dtpFrom.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dtpTo.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
-
-            // dgv bill
-            DataTable dtBill = BillDAO.Instance.GetBillCashiered();
-            dgvEarning.DataSource = dtBill;
 
             // dgv food
             dgvFood.DataSource = foodList;
@@ -74,6 +77,42 @@ namespace CofffeeStoreManagement
 
         }
 
+        private void LoadInvoicesFromDatabase()
+        {
+            // Lấy dữ liệu từ cơ sở dữ liệu và gán vào allInvoices
+            dtBill = BillDAO.Instance.GetBillCashiered();
+        }
+
+        private void DisplayInvoicesOnCurrentPage()
+        {
+            int totalCase = dtBill.Rows.Count;
+            lblTotalCase.Text = Convert.ToString(totalCase);
+            lblFirstPage.Text = currentPage.ToString();
+            lblLastPage.Text = (totalCase/10 + 1).ToString();
+
+            int startIndex = (currentPage - 1) * recordsPerPage;
+            int endIndex = Math.Min(startIndex + recordsPerPage, dtBill.Rows.Count);
+
+            if(dgvEarning.Rows.Count > 0)
+            {
+                dgvEarning.Rows.Clear();
+            }
+
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                // Lấy dòng dữ liệu từ DataTable và thêm nó vào DataGridView
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvEarning);
+
+                row.Cells[0].Value = dtBill.Rows[i]["id"]; 
+                row.Cells[1].Value = dtBill.Rows[i]["id_tableSeat"];
+                row.Cells[2].Value = ((DateTime)dtBill.Rows[i]["date_checkin"]).ToString("yyyy/MM/dd");
+                row.Cells[3].Value = dtBill.Rows[i]["discount"];
+                row.Cells[4].Value = dtBill.Rows[i]["total_price"];
+
+                dgvEarning.Rows.Add(row);
+            }
+        }
         #region Load
         private void LoadFood()
         {
@@ -139,14 +178,14 @@ namespace CofffeeStoreManagement
         #region Uriage
         private void btnFilterByDate_Click(object sender, EventArgs e)
         {
-            DataTable dt = BillDAO.Instance.GetBillCashieredByDate(dtpDate.Value);
-            dgvEarning.DataSource = dt;
+            dtBill = BillDAO.Instance.GetBillCashieredByDate(dtpDate.Value);
+            DisplayInvoicesOnCurrentPage();
         }
 
         private void btnFilterByDateToDate_Click(object sender, EventArgs e)
         {
-            DataTable dt = BillDAO.Instance.GetBillCashieredByDateToDate(dtpFrom.Value, dtpTo.Value);
-            dgvEarning.DataSource = dt;
+            dtBill = BillDAO.Instance.GetBillCashieredByDateToDate(dtpFrom.Value, dtpTo.Value);
+            DisplayInvoicesOnCurrentPage();
         }
         #endregion
 
@@ -521,6 +560,28 @@ namespace CofffeeStoreManagement
                 {
                     MessageUtil.ShowMessage("INF_3005", MessageBoxButtons.OK, this.Text);
                 }
+            }
+        }
+
+        #endregion
+
+        #region page split
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                DisplayInvoicesOnCurrentPage();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int maxPage = (int)Math.Ceiling((double)dtBill.Rows.Count / recordsPerPage);
+            if (currentPage < maxPage)
+            {
+                currentPage++;
+                DisplayInvoicesOnCurrentPage();
             }
         }
         #endregion

@@ -93,8 +93,8 @@ namespace CofffeeStoreManagement
                 loginError = 0;
                 AccountDTO accountDTO = AccountDAO.Instance.GetAccountByUserName(txtUserName.Text);
                 Main main = new Main(accountDTO);
-                main.ShowDialog();//show top most form main 
-                this.Close();
+                main.Show();
+                this.Hide();
             }
             else // login that bai
             {
@@ -117,7 +117,7 @@ namespace CofffeeStoreManagement
             DialogResult result = MessageUtil.ShowMessage("QUES_1001", MessageBoxButtons.OKCancel, this.Text);
             if (result == DialogResult.OK)
             {
-                this.Close();
+                Application.Exit();
             }
         }
         private void Timer_Tick(object sender, EventArgs e)

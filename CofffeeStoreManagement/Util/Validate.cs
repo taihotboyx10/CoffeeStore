@@ -32,5 +32,13 @@ namespace CofffeeStoreManagement.Util
             // Nếu mật khẩu thoả mãn tất cả các điều kiện, trả về true
             return true;
         }
+
+        public bool PhoneValid(string phone)
+        {
+            string pattern = @"^(?:\+?(\d{1,3}))?[-.\s]?(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$";
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(phone);
+        }
     }
 }
